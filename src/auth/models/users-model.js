@@ -1,6 +1,10 @@
 'use strict'
 
-const user = (sequelize, DataTypes) => sequelize.define('users', {
+const bcrypt = require('bcrypt')
+
+const {sequelize,DataTypes} = require('./index')
+
+const user = sequelize.define('users', {
     userName: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -12,5 +16,14 @@ const user = (sequelize, DataTypes) => sequelize.define('users', {
     }
 })
 
+user.checker = async function (userName, password) {
+    const users = await user.findOne({ where: { userName } })
+    const isValid = await bcrypt.compare(password, users.password)
+    if (isValid) {
+        return users;
+    } else {
+        throw new Error('user not exists')
+    }
+}
 module.exports = user
 
