@@ -8,10 +8,9 @@ let sequelize = new Sequelize(DATA_BASE_URL,{});
 
 const user = require('./users-model')
 
-const userModel = user(sequelize,DataTypes)
 
 module.exports = {
-    db:sequelize,
-    user: userModel
+    sequelize,
+    DataTypes
 }
 

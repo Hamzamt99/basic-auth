@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt')
 
 const isAuth = require('./middleware/basic')
 
-const { user } = require('./models/index')
+const  user  = require('./models/users-model')
 
 router.get('/', handelHome)
 
@@ -17,7 +17,9 @@ router.post('/signin', isAuth,handelSignIn)
 router.post('/signup', handelSignUp)
 
 async function handelSignIn(req, res) {
-    console.log('welcome');
+    res.status(200).json({
+        message:`welcome ${req.users.userName}`
+    })
 }
 
 function handelHome(req, res) {
