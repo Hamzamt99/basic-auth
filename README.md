@@ -1,4 +1,6 @@
 # basic-auth
+## pull link :https://github.com/Hamzamt99/basic-auth/pull/3
+## action link:https://github.com/Hamzamt99/basic-auth/actions
 
 ## write tests for code blocks of your choice. Practice engineering optimal prompts to engage AI. Anytime you utilize AI:
 ### the code:
