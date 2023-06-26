@@ -1,5 +1,9 @@
 # basic-auth
 
+
+## uml diagram :
+![uml](/src//assets/uml.jpg)
+
 ## write tests for code blocks of your choice. Practice engineering optimal prompts to engage AI. Anytime you utilize AI:
 ### the code:
 function factorial(n) {
