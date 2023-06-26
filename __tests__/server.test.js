@@ -17,34 +17,22 @@ afterAll(async () => {
     await sequelize.drop();
 })
 
-describe('Test the Error Handlers', () => {
-    it('Create a user using POST', async () => {
-        const res = await req.post('/signup').send(
-            {
-                userName:"mousab",
-                password:"hamza@"
-            }
-        )
-        expect(res.status).toBe(201);
-    })
-    // it('test  a user Authorization', async () => {
-    // const userName = 'mousab';
-    // const password = 'hamza@';
+  
+  describe('Authentication Routes', () => {
+    it('should allow creating a new user through /signup route', async () => {
+      const response = await req.post('/signup').send({
+          userName: 'mohamd',
+          password: '123'
+        });
+  
+      expect(response.status).toBe(201);
+    });
+    it('should allow logging in as a user through /signin route', async () => {
+        const response = await req.post('/signin').type('form').auth('mohamd', '123');
+      
+        expect(response.status).toBe(200);
+      });
+      
 
-    // // Create a base64-encoded string of the username and password
-    // const credentials = Buffer.from(`${userName}:${password}`).toString('base64');
-
-    // // Set the Authorization header with Basic Authentication
-    // const headers = {
-    //   Authorization: `Basic ${credentials}`,
-    // };
-
-    // // Make an HTTP GET request to a protected endpoint
-    // const res = await req.post('/signin')
-
-    // // Assert the response as needed
-    // expect(res.status).toBe(200);
-    // // ... additional assertions
-    // })
-})
+  });
 
